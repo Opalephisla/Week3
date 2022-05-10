@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <button>GO</button>
+    <div class="result"></div>
+    <script>
+        // ajax request to https://api.coindesk.com/v1/bpi/currentprice.json
+        // and display the result in the div
+        $("button").click(function () {
+            $.get("https://api.coindesk.com/v1/bpi/currentprice.json", function (data) {
+                // make a table with the data of the request
+                var table = "<table>";
+                for (var key in JSON.parse(data).bpi) {
+                    table += "<tr><td>" + key + "</td><td>" + JSON.parse(data).bpi[key].rate + "</td></tr>";
+                }
+                table += "</table>";
+                $(".result").append(table);
+            });
+
+        });
+    </script>
+</body>
+
+</html>

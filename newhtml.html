@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Demonstration of background color in jquery for web elements </title>
+    <!-- CDN Jsdeliv jquery script -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="store.js"></script>
+    
+    <style>
+        div.test {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .produit {
+            width: 30px;
+            height: 30px;
+            background-color: aqua;
+            border: 1px solid red;
+            margin: 20px;
+            padding: 20px;
+            justify-content: center;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            font-size: 0.7em;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+    <script>
+        let blogPosts = [{
+            title: "First Blog Post",
+            content: "This is the first blog post",
+        },
+        {
+            title: "Second Blog Post",
+            content: "This is the second blog post",
+        },
+        {
+            title: "Third Blog Post",
+            content: "This is the third blog post",
+        },
+        ]
+        $(document).ready(function () {
+            $(".produit").click(function () {
+                console.log($(this).attr("id"));
+            });
+            $(".btn4").click(function () {
+                $("#container").append('<div class="produit" id="pid4">Hello</div>');
+            })
+            let lidb = $(this).attr("id");
+            $("#" + lidb).css("color", "red");
+            $(".produit").hide();
+            $("#" + lidb).show();
+            $(document).on("click", ".produit", function () {
+                $(this).remove();
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <p> Click here to see the change of background color by moving the mouse and clicking on this paragraph. </p>
+        <h4> Double click on the below red box to see the change of background color </h4>
+        <div class="test">ABC</div>
+        <div class="produit" id="pid1">pantalon 1</div>
+        <div class="produit" id="pid2">pantalon 2</div>
+        <div class="produit" id="pid3">robe</div>
+        <div id="froala-editor">
+            <p>Hit enter at the end of this line to see the Quick Insert toolbar.</p>
+          </div>
+    </div>
+    <button class="btn4">Click me</button>
+    <button class="btn6">Cliked</button>
+</body>
+
+</html>

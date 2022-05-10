@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- import bootstrap via cdn -->
+    <!-- jquery 3.6.0 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/ff5465ab3f.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 12px;
+            background-color: rgb(97, 104, 104);
+        }
+
+        #ch {
+            display: none;
+        }
+
+        #catalogue {
+            text-align: center;
+        }
+
+        img {
+            width: auto;
+            max-width: 150px;
+            height: auto;
+            max-height: 100px;
+        }
+
+        #header h1 {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 40px;
+            margin-top: 40px;
+        }
+
+        p {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .article {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .produit {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 14px;
+            margin-top: 15px;
+            margin-left: 15px;
+            margin-right: 10px;
+            margin-bottom: 15px;
+        }
+
+        .prods {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            display: flex;
+            border-radius: 2%;
+            height: 600px;
+            flex-direction: row;
+            flex: space-around;
+            flex-wrap: wrap;
+            font-size: 14px;
+            margin-top: 5px;
+            border: 1px solid black;
+            background: rgba(255, 166, 0, 0.815);
+            margin-bottom: 40px;
+            margin-top: 15px;
+        }
+
+        #home {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 40px;
+            font-weight: bold;
+            height: 600px;
+            margin-top: 15px;
+            margin-bottom: 25px;
+            border: 1px solid black;
+        }
+
+        #text {
+            text-align: center;
+            color: rgb(0, 0, 0);
+            font-size: 22px;
+            width: 80%;
+            /* align text */
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 25px;
+            margin-bottom: 25px;
+        }
+
+        #freet {
+            position: fixed;
+            top: 5px;
+            right: 120px;
+            border-radius: 50%;
+            border: 12px solid orange;
+            background: orange;
+            width: 70px;
+            height: 70px;
+            text-align: center;
+            line-height: 1.2;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:current {
+            color: black;
+            text-decoration: none;
+        }
+
+        a:focus {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.9);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content (image) */
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        /* Caption of Modal Image */
+        #caption {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: #ccc;
+            padding: 10px 0;
+            height: 150px;
+        }
+
+        /* Add Animation */
+        .modal-content,
+        #caption {
+            -webkit-animation-name: zoom;
+            -webkit-animation-duration: 0.6s;
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @-webkit-keyframes zoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* The Close Button */
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* 100% Image Width on Smaller Screens */
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+    <header>
+        <img src="logo.png">
+        <nav>
+            <ul>
+                <li><a href="#" id="btn">Accueil</a></li>
+                <li><a href="#" id="h">Hommes</a></li>
+                <li><a href="#" id="f">Femmes</a></li>
+                <li><a href="#" id="c">Enfants</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#" id="freet">Free Trial</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="prods" id="home" style="display: block;">Notre catalogue<br>
+        <div id="text">Aliquam erat volutpat. Donec ante risus, congue non molestie eu, accumsan eu justo. Vivamus
+            volutpat sagittis elit, vitae rutrum urna consectetur sed. Integer cursus faucibus urna, a eleifend libero
+            pulvinar in. Fusce et est in nulla rutrum aliquet ac sit amet dui. Aliquam justo arcu, euismod in
+            sollicitudin in, finibus et nulla. Maecenas erat sapien, fermentum at tristique eget, tincidunt at ante.
+            Quisque tincidunt nibh eu elit aliquet, sit amet tempor odio posuere. Nulla nibh lectus, cursus quis aliquet
+            et, faucibus eu augue. Quisque pharetra diam at libero rhoncus ullamcorper. Fusce at est sed neque aliquet
+            elementum. Praesent sapien ex, interdum id quam id, ullamcorper fermentum urna.<br><br>Aliquam erat
+            volutpat.
+            Donec ante risus, congue non molestie eu, accumsan eu justo. Vivamus volutpat sagittis elit, vitae rutrum
+            urna consectetur sed. Integer cursus faucibus urna, a eleifend libero pulvinar in. Fusce et est in nulla
+            rutrum aliquet ac sit amet dui. Aliquam justo arcu, euismod in sollicitudin in, finibus et nulla. Maecenas
+            erat sapien, fermentum at tristique eget, tincidunt at ante. Quisque tincidunt nibh eu elit aliquet, sit
+            amet tempor odio posuere. Nulla nibh lectus, cursus quis aliquet et, faucibus eu augue. Quisque pharetra
+            diam at libero rhoncus ullamcorper. Fusce at est sed neque aliquet elementum. Praesent sapien ex, interdum
+            id quam id, ullamcorper fermentum urna.</div>
+    </div>
+    <div class="prods" id="ch" style="display: none;"></div>
+    <div class="prods" id="cf" style="display: none;"></div>
+    <div class="prods" id="cc" style="display: none;"></div>
+    <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal"><span
+                            aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <img src="" class="imagepreview" style="width: 100%;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function loadstoreProducts(arg) {
+            $.ajax({
+                url: "./store.json",
+                method: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var html = '';
+                    for (var i = 0; i < data.length; i++) {
+                        if (data[i].id == arg.id) {
+                            html += '<div class="produit">' + data[i].name + " " + data[i].price + " €";
+                            html += '<p>' + data[i].description + '</p>';
+                            html += `<p><a href="#" class="pop"><img src=img/${data[i].image} id="imgclo"></a></p>`
+                            html += '<button class="achat" id="btn-achat">Acheter</button></div>';
+                        }
+                        else {
+                            console.log("nope")
+                        }
+                    }
+                    $(".prods" + "#c" + arg.id).html(html);
+                    $(".pop").on("click", function (e) {
+                        $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                        $('#imagemodal').modal('show');
+                    });
+                }
+            });
+        }
+
+
+        document.querySelector("#h").addEventListener("click", function () {
+            loadstoreProducts(h);
+            document.querySelector("#ch").style.display = "flex";
+            document.querySelector("#cf").style.display = "none";
+            document.querySelector("#cc").style.display = "none";
+            document.querySelector("#home").style.display = "none";
+        });
+        document.querySelector("#btn").addEventListener("click", function () {
+            loadstoreProducts(h);
+            document.querySelector("#home").style.display = "block";
+            document.querySelector("#ch").style.display = "none";
+            document.querySelector("#cf").style.display = "none";
+            document.querySelector("#cc").style.display = "none";
+        });
+        document.querySelector("#f").addEventListener("click", function () {
+            loadstoreProducts(f);
+            document.querySelector("#ch").style.display = "none";
+            document.querySelector("#cf").style.display = "flex";
+            document.querySelector("#cc").style.display = "none";
+            document.querySelector("#home").style.display = "none";
+        });
+        document.querySelector("#c").addEventListener("click", function () {
+            loadstoreProducts(c);
+            document.querySelector("#ch").style.display = "none";
+            document.querySelector("#cf").style.display = "none";
+            document.querySelector("#cc").style.display = "flex";
+            document.querySelector("#home").style.display = "none";
+        });
+    </script>
+    <footer class="footer_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title" style="color: orange;">Contacts</h4>
+                        <ul>
+                            <li>4080 Repperts Coaol Road Sackson, MS 00201 USA</li>
+                            <li>(+123) 685 78 455 <br> (+064) 336 987 245</li>
+                            <li>Contact@yourcompany.com</li>
+                        </ul>
+                    </div>
+                </div> <!--  End Col -->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title" style="color: orange;">Information</h4>
+                        <ul>
+                            <li><a href="#" style="color: white;">About Us</a></li>
+                            <li><a href="#" style="color: white;">Delivery Information</a></li>
+                            <li><a href="#" style="color: white;">Privacy Policy</a></li>
+                            <li><a href="#" style="color: white;">Terms & Conditions</a></li>
+                            <li><a href="#" style="color: white;">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div> <!--  End Col -->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title" style="color: orange;">Services</h4>
+                        <ul>
+                            <li><a href="#" style="color: white;">Returns</a></li>
+                            <li><a href="#" style="color: white;">Site Map</a></li>
+                            <li><a href="#" style="color: white;">Wish List</a></li>
+                            <li><a href="#" style="color: white;">My Account</a></li>
+                            <li><a href="#" style="color: white;">Order History</a></li>
+                        </ul>
+                    </div>
+                </div> <!--  End Col -->
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="single_ftr">
+                        <h4 class="sf_title" style="color: orange;">Newsletter</h4>
+                        <div class="newsletter_form">
+                            <p style="color: white;">There are many variations of passages of Lorem Ipsum available, but
+                                the majority have
+                            </p>
+                            <form method="post" class="form-inline">
+                                <input name="EMAIL" id="email" placeholder="Enter Your Email" class="form-control"
+                                    type="email">
+                                <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div> <!--  End Col -->
+
+            </div>
+        </div>
+
+
+        <div class="ftr_btm_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="ftr_social_icon">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-google"></i></a></li>
+                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <p class="copyright_text text-center" style="color: white;">© 2019 All Rights Reserved Bootstrap
+                            4 footer
+                        </p>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="payment_mthd_icon text-right">
+                            <ul>
+                                <li><i class="fa fa-cc-paypal"></i></li>
+                                <li><i class="fa fa-cc-visa"></i></li>
+                                <li><i class="fa fa-cc-discover"></i></li>
+                                <li><i class="fa fa-cc-mastercard"></i></li>
+                                <li><i class="fa fa-cc-amex"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

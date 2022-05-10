@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="store.js"></script>
+    
+    <script>
+        $(".article").click(function () {
+            // je peux agir sur toute la classe avec avec la fonction css
+            // je met tous les textes de boutons en noir
+            $(".article").css('color', 'black');
+            // juste pour voir quel est l'id en console
+            console.log($(this).attr("id"));
+            // je récupère l'id et le met dans ne variable
+            var laïdi = $(this).attr("id")
+            // et sur l'id
+            $('#' + laïdi).css("color", "red"); // change la couleur du bouton
+            $(".prods").hide()   // fonction jquery qui fait un display:none.
+            $("#c" + laïdi).show() // fonction jquery qui fait un display:block.
+
+        })
+    </script>
+    <style>
+        #ch {
+            display: none;
+            /* les femmes d'abord */
+        }
+
+        .prods {
+            width: 940px;
+            height: 200px;
+            background-color: aqua;
+            border: 1px solid red;
+            padding: 20px;
+            margin: auto;
+            margin-top: 50px;
+            font-size: 40px;
+            text-align: center;
+            color: blueviolet;
+        }
+
+        #catalogue {
+            /* centre les boutons dans le div */
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="catalogue">
+        <button class="article" id="h" style="color: red;">homme</button>
+        <button class="article" id="f" style="color: black;">femme</button>
+    </div>
+    <div id="froala-editor">
+        <p>Hit enter at the end of this line to see the Quick Insert toolbar.</p>
+      </div>
+    <div class="prods" id="ch" style="display: block;">GROS CATALOGUE HOMMES</div>
+    <div class="prods" id="cf" style="display: none;">GROS CATALOGUE FEMMES</div>
+
+
+
+</body>
+
+</html>
